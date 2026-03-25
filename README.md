@@ -1,2 +1,2 @@
 # NoteNook
-A PostgreSQL-backed inventory engine implemented with Spring Data JPA, as a self-hosted service to keep up with home assets.
+A PostgreSQL-backed inventory engine implemented with Spring Data JPA, utilizing a self-hosted service model to keep up with home assets.
