@@ -8,6 +8,10 @@ A PostgreSQL-backed inventory engine implemented with Spring Data JPA, utilizing
 
 ## Work in progress!
 Current Goals:
+- [x] Database Setup.
+- [x] Docker Containerization
+- [x] Basic Models
+- [x] Structuring REST API controllers, services and repositories.
 - [x] PostMapping for creating Nooks, Categories and Items.
 - [x] DeleteMapping to remove unwanted data.
 - [ ] GetMapping to retrieve wanted data.
