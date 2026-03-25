@@ -12,4 +12,4 @@ Current Goals:
 - [x] DeleteMapping to remove unwanted data.
 - [ ] GetMapping to retrieve wanted data.
 - [ ] PutMapping for updating specific data.
-- [ ] .PDF Generation for ease of access.
+- [ ] .PDF Generation for users to extract Nook data.
