@@ -5,3 +5,11 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 A PostgreSQL-backed inventory engine implemented with Spring Data JPA, utilizing a self-hosted service model to keep up with home assets.
+
+## Work in progress!
+Current Goals:
+- [x] PostMapping for creating Nooks, Categories and Items.
+- [x] DeleteMapping to remove unwanted data.
+- [ ] GetMapping to retrieve wanted data.
+- [ ] PutMapping for updating specific data.
+- [ ] .PDF Generation for ease of access.
