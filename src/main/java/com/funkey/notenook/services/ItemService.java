@@ -8,10 +8,10 @@ import com.funkey.notenook.repositories.CategoryRepository;
 import com.funkey.notenook.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Service
 public class ItemService {
@@ -44,7 +44,22 @@ public class ItemService {
         return new ItemResponse(savedItem.getId(), savedItem.getName(), savedItem.getBrand(), savedItem.getDescription(),  savedItem.getCategory().getName());
     }
 
+    public List<ItemResponse> getAll() {
+        return itemRepository.findAll().stream()
+                .map(item -> new ItemResponse(item.getId(), item.getName(), item.getBrand(), item.getDescription(), item.getCategory().getName() ))
+                .toList();
+    }
+
+    public ItemResponse getById(@PathVariable Long id){
+        Item item = itemRepository.findById(id).orElse(null);
+        return new ItemResponse(item.getId(), item.getName(), item.getBrand(), item.getDescription(), item.getCategory().getName());
+    }
+
     public void deleteItem(@PathVariable Long id){
         itemRepository.deleteById(id);
     }
+
+
+
+
 }

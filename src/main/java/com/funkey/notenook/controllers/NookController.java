@@ -8,10 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/nook")
+@RequestMapping("/api/nooks")
 public class NookController {
 
     @Autowired
@@ -23,11 +24,23 @@ public class NookController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<List<NookResponse>> getAllNooks(){
+        List<NookResponse> response = nookService.getAll();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<NookResponse> getById(@PathVariable UUID id){
+        return new ResponseEntity<>(nookService.getById(id), HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNook(@PathVariable UUID id){
         nookService.deleteNook(id);
         return ResponseEntity.noContent().build();
     }
+
 
 
 }

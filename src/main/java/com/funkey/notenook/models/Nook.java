@@ -26,8 +26,15 @@ public class Nook {
     private List<Category> categories = new ArrayList<>();
 
     public String formattedDate(){
+        if (this.createdDate == null){
+            return null;
+        }
         String[] splitDate = createdDate.toString().split("T");
-        return splitDate[0];
+        String yearMonthDay = splitDate[0];
+        String[] dateElements =  yearMonthDay.split("-");
+        String formattedDate = dateElements[1] + "-" + dateElements[2] + "-" + dateElements[0];
+
+        return formattedDate;
     }
 
 

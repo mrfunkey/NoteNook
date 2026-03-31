@@ -2,8 +2,6 @@ package com.funkey.notenook.services;
 
 import com.funkey.notenook.dtos.NookRequest;
 import com.funkey.notenook.dtos.NookResponse;
-import com.funkey.notenook.models.Category;
-import com.funkey.notenook.models.Item;
 import com.funkey.notenook.models.Nook;
 import com.funkey.notenook.repositories.CategoryRepository;
 import com.funkey.notenook.repositories.ItemRepository;
@@ -27,7 +25,7 @@ public class NookService {
         this.nookRepository = nookRepository;
     }
 
-    public NookResponse createNook (NookRequest request){
+    public NookResponse createNook(NookRequest request){
         String name = request.name();
         String passkey = request.passkey();
 
@@ -39,9 +37,22 @@ public class NookService {
         return new NookResponse(savedNook.getId(), savedNook.getName(), savedNook.formattedDate());
     }
 
+    public List<NookResponse> getAll(){
+        return nookRepository.findAll().stream()
+                .map(nook -> new NookResponse(nook.getId(), nook.getName(), nook.formattedDate()))
+                .toList();
+    }
+
+    public NookResponse getById(@PathVariable UUID id){
+        Nook nook = nookRepository.findById(id).orElse(null);
+        return new NookResponse(nook.getId(), nook.getName(), nook.formattedDate());
+    }
+
     public void deleteNook(@PathVariable UUID nookId){
         nookRepository.deleteById(nookId);
     }
+
+
 
 
 }

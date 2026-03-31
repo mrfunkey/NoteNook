@@ -8,8 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/item")
+@RequestMapping("/api/items")
 public class ItemController {
 
     @Autowired
@@ -21,9 +23,22 @@ public class ItemController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<List<ItemResponse>> getAllItems(){
+        List<ItemResponse> items = itemService.getAll();
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ItemResponse> getById(@PathVariable Long id){
+        return new ResponseEntity<>(itemService.getById(id), HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long id){
         itemService.deleteItem(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }
