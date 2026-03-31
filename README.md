@@ -14,6 +14,6 @@ Current Goals:
 - [x] Structuring REST API controllers, services and repositories.
 - [x] PostMapping for creating Nooks, Categories and Items.
 - [x] DeleteMapping to remove unwanted data.
-- [ ] GetMapping to retrieve wanted data.
+- [x] GetMapping to retrieve wanted data.
 - [ ] PutMapping for updating specific data.
 - [ ] .PDF Creation & Exportation for extracting Nook data.
